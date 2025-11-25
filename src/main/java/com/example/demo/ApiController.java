@@ -23,7 +23,7 @@ public class ApiController {
     @PostMapping("books/{name}")
     public ResponseEntity<String> createBook(@PathVariable("name") String name){
         books.add(name);
-        return ResponseEntity.ok("New book:"+name);
+        return ResponseEntity.ok().build();
     }
 }
 
