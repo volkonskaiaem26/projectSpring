@@ -16,7 +16,7 @@ public class ApiController {
 
     @GetMapping("books")
     public ResponseEntity<String> getText() {
-        return ResponseEntity.ok("List of books");
+        return ResponseEntity.ok("List of books:"+String.join(" ", books));
     }
 
     @GetMapping("books/{name}")
