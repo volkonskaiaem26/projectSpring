@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class ApiController {
         return ResponseEntity.ok("List of books:"+String.join(" ", books));
     }
 
-    @GetMapping("books/{name}")
+    @PostMapping("books/{name}")
     public ResponseEntity<String> createBook(@PathVariable("name") String name){
         books.add(name);
         return ResponseEntity.ok("New book:"+name);
