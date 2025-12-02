@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MessageController {
     private final List<String> messages = new ArrayList<>();
 
-    //curl -X GET localhost:8080/messages -H "Content-Type: application/json"  -d "text"
+    //curl -X GET localhost:8080/messages -H "Content-Type: text/plain"  -d "text"
     @GetMapping("messages")
     public ResponseEntity<List<String>> getMessages(@RequestBody String text) {
         List<String> list = new ArrayList<>(messages);
@@ -20,7 +20,7 @@ public class MessageController {
         return ResponseEntity.ok(list);
     }
 
-    //curl -X POST localhost:8080/messages -H "Content-Type: application/json"  -d "text"
+    //curl -X POST localhost:8080/messages -H "Content-Type: text/plain"  -d "text"
     @PostMapping("messages")
     public ResponseEntity<Void> addMessage(@RequestBody String text) {
         messages.add(text);
@@ -40,7 +40,7 @@ public class MessageController {
         return ResponseEntity.noContent().build();
     }
 
-    //curl -X PUT localhost:8080/messages/{index} -H "Content-Type: application/json"  -d "text"
+    //curl -X PUT localhost:8080/messages/{index} -H "Content-Type: text/plain"  -d "text"
     @PutMapping("messages/{index}")
     public ResponseEntity<Void> updateMessage(
             @PathVariable("index") Integer i,
@@ -67,7 +67,7 @@ public class MessageController {
         return ResponseEntity.ok(messages.size());
     }
 
-    //curl -X POST localhost:8080/messages/{index}/create -H "Content-Type: application/json"  -d "text"
+    //curl -X POST localhost:8080/messages/{index}/create -H "Content-Type: text/plain"  -d "text"
     @PostMapping("messages/{index}/create")
     public ResponseEntity<Void> createMessage(@PathVariable("index") Integer index, @RequestBody String message){
         messages.add(index, message);
