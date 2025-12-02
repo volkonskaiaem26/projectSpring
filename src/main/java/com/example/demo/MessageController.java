@@ -16,7 +16,7 @@ public class MessageController {
     @GetMapping("messages")
     public ResponseEntity<List<String>> getMessages(@RequestBody String text) {
         List<String> list = new ArrayList<>(messages);
-        list.removeIf(message -> !message.equals(text));
+        list.removeIf(message -> !message.contains(text));
         return ResponseEntity.ok(list);
     }
 
@@ -54,7 +54,7 @@ public class MessageController {
     @GetMapping("messages/search/{text}")
     public ResponseEntity<String> getMessage(@PathVariable("text") String text){
         for (String message : messages) {
-            if (message.equals(text)) {
+            if (message.contains(text)) {
                 return ResponseEntity.ok(message);
             }
         }
@@ -77,7 +77,7 @@ public class MessageController {
     //curl -X DELETE localhost:8080/messages/search/{text}
     @DeleteMapping("messages/search/{text}")
     public ResponseEntity<Void> deleteMessage(@PathVariable("text") String text){
-        messages.removeIf(message -> message.equals(text));
+        messages.removeIf(message -> message.contains(text));
         return ResponseEntity.noContent().build();
     }
 
