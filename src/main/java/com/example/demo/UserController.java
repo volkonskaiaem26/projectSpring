@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    //curl -X DELETE localhost:8081/users/{index}
+    //curl -X DELETE localhost:8080/users/{index}
     @DeleteMapping("users/{index}")
     public ResponseEntity<Void> deleteUser(@PathVariable("index") Integer index) {
         users.remove((int) index);
@@ -34,7 +34,7 @@ public class UserController {
     }
 
 
-    //curl -X GET localhost:8081/users/{index}
+    //curl -X GET localhost:8080/users/{index}
     @GetMapping("users/{index}")
     public ResponseEntity<User> getUser(@PathVariable("index") Integer index) {
         return ResponseEntity.ok(users.get(index));
@@ -42,7 +42,7 @@ public class UserController {
 
     //curl -X PUT localhost:8080/users/{index} -H "Content-Type: application/json"  -d "age"
     @PutMapping("users/{index}")
-    public ResponseEntity<Void> putAge(@PathVariable("imdex") Integer index, @RequestBody Integer age){
+    public ResponseEntity<Void> putAge(@PathVariable("index") Integer index, @RequestBody Integer age){
         User user = users.get(index);
         user.setAge(age);
         return ResponseEntity.accepted().build();
