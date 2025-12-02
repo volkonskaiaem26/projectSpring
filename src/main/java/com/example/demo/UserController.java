@@ -13,12 +13,11 @@ public class UserController {
 
     private final List<User> users = new ArrayList<>();
 
-    //curl -X POST localhost:8080/users -H "Content-Type: application/json"  -d {"name": "name", "age": age}
+    //curl localhost:8080/users -X POST -H "Content-Type: application/json" -d "{\"name\":\"name\", \"age\":age}
     @PostMapping("users")
-    public ResponseEntity<Void> addUser(@RequestBody String name, @RequestBody Integer age) {
-        User user = new User(name,age);
+    public ResponseEntity<Void> addUser(@RequestBody User user) {
         users.add(user);
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.ok().build();
     }
 
     //curl -X GET localhost:8080/users
