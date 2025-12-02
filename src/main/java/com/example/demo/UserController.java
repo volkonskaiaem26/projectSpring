@@ -13,7 +13,7 @@ public class UserController {
 
     private final List<User> users = new ArrayList<>();
 
-    //curl -X POST localhost:8080/users -H "Content-Type: application/json"  -d {"name", "age"}
+    //curl -X POST localhost:8080/users -H "Content-Type: application/json"  -d {"name": "name", "age": age}
     @PostMapping("users")
     public ResponseEntity<Void> addUser(@RequestBody String name, @RequestBody Integer age) {
         User user = new User(name,age);
